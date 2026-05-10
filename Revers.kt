@@ -2,7 +2,7 @@ fun main() {
     val kotlin = "myself is vinod hello"
     val arrCh = kotlin.toCharArray()
     var start=0
-    reversString(arrCh,start,arrCh.size-1)
+    reversString(arrCh,start,arrCh.size-1) // Reverse each word in place
     arrCh.forEachIndexed(){i,ch->
         if(ch==' ')
         {
