@@ -1,0 +1,27 @@
+Merge Intervals
+val kotlin = arrayOf(intArrayOf(2,4),intArrayOf(3,6),intArrayOf(8,9),intArrayOf(7,18),intArrayOf(20,24))
+     val merged = merge(kotlin)
+    println("Merged Intervals:")
+    for (interval in merged) {
+        println(interval.joinToString(","))
+    }
+
+fun merge(inpArr:Array<IntArray>):MutableList<IntArray>{
+    inpArr.sortBy{it[0]}
+    val outPut=mutableListOf<IntArray>() 
+    var previous=inpArr[0]
+      for(i in 1 .. inpArr.size-1){
+       val current=inpArr[i]
+         if(previous[1]>current[0]){
+             previous=intArrayOf(previous[0],maxOf(previous[1],current[1]))
+          }
+          else{
+           outPut.add(previous ) 
+           previous=current
+          }
+   
+    }
+    outPut.add(previous)   
+
+return outPut
+}
