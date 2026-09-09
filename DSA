@@ -1,3 +1,17 @@
+fun twoSum(nums: IntArray, target: Int): IntArray {
+    val map = HashMap<Int, Int>()
+
+    for (i in nums.indices) {
+        val complement = target - nums[i]
+        
+       if (map.containsKey(complement)) {
+            return intArrayOf(map[complement]!!, i)
+        }
+                map[nums[i]] = i
+    }
+
+    throw IllegalArgumentException("No two sum solution found")
+}
 Merge Intervals
 val kotlin = arrayOf(intArrayOf(2,4),intArrayOf(3,6),intArrayOf(8,9),intArrayOf(7,18),intArrayOf(20,24))
      val merged = merge(kotlin)
