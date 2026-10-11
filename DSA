@@ -1,3 +1,17 @@
+fun secondLargest(inp:List<Int>):Int{
+    var largest=Int.MIN_VALUE
+    var secondLargest=Int.MIN_VALUE
+    for(i in inp){
+        if(i>largest){
+            println(i)
+            secondLargest=largest
+            largest=i
+        }else if(i>secondLargest && i<largest){  // when we have duplicate largest
+            secondLargest=i
+        }
+    }
+    return secondLargest
+}
 fun twoSum(nums: IntArray, target: Int): IntArray {
     val map = HashMap<Int, Int>()
 
