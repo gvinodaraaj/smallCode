@@ -9,3 +9,18 @@ fun getGroupAnagram(inp:List<String>):List<List<String>>{
  
 return mapAna.map{it.value}   
 }
+Non Repeting 
+1 Input: "aabbcddee" Output: 'c'
+2 Input: "aabb" Output: null
+fun firstNonRepeating(inp:String):Char?{
+val setStr=HashMap<Char,Int>()
+ for(i in inp){
+     setStr[i]=setStr.getOrDefault(i,0)+1
+ }
+ for(i in inp){
+     if(setStr[i]==1){
+         return i
+     }
+ }
+return null  
+}
