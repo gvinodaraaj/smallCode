@@ -1,0 +1,11 @@
+group annagram 
+["eat", "tea", "tan", "ate", "nat", "bat"]
+fun getGroupAnagram(inp:List<String>):List<List<String>>{
+ val mapAna=HashMap<String,MutableList<String>>()
+ for(i in inp){
+     val anaKey= i.toCharArray().sorted().joinToString("")
+     mapAna.getOrPut(anaKey) {mutableListOf()}.add(i)
+ }
+ 
+return mapAna.map{it.value}   
+}
