@@ -41,7 +41,7 @@ var secondLargest:Int?=null
  }
 return secondLargest 
 }
-twoSum
+//twoSum
 inp = intArrayOf(2, 7, 11, 15)
 target = 9
 fun twoSum(inp:IntArray,target:Int):Pair<Int,Int>?{
@@ -55,4 +55,14 @@ val mapItem=HashMap<Int,Int>()
  }
 return null 
 }
-
+//find duplicate
+1 Input:  intArrayOf(1, 2, 3, 2, 4, 1, 5) Output: [2, 1]
+fun findduplicate(inp:IntArray):List<Int>{
+val mapItem=HashMap<Int,Int>()
+ for(i in inp){
+     mapItem[i]=mapItem.getOrDefault(i,0)+1
+ }
+return mapItem.filter{it.value>1}.map{it.key} 
+}
+Time complexity	O(n) average
+Space complexity	O(n)
