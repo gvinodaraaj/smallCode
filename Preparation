@@ -41,3 +41,18 @@ var secondLargest:Int?=null
  }
 return secondLargest 
 }
+twoSum
+inp = intArrayOf(2, 7, 11, 15)
+target = 9
+fun twoSum(inp:IntArray,target:Int):Pair<Int,Int>?{
+val mapItem=HashMap<Int,Int>()
+ for((i,item) in inp.withIndex()){
+     val complement=target-item
+     if(complement in mapItem){
+	  return Pair(i,mapItem[complement]!!)
+     }
+     mapItem[item]=i
+ }
+return null 
+}
+
