@@ -1,4 +1,4 @@
-group annagram 
+// group annagram 
 ["eat", "tea", "tan", "ate", "nat", "bat"]
 fun getGroupAnagram(inp:List<String>):List<List<String>>{
  val mapAna=HashMap<String,MutableList<String>>()
@@ -9,7 +9,7 @@ fun getGroupAnagram(inp:List<String>):List<List<String>>{
  
 return mapAna.map{it.value}   
 }
-Non Repeting 
+// Non Repeting 
 1 Input: "aabbcddee" Output: 'c'
 2 Input: "aabb" Output: null
 fun firstNonRepeating(inp:String):Char?{
@@ -23,4 +23,21 @@ val setStr=HashMap<Char,Int>()
      }
  }
 return null  
+}
+// secondLargestDistinct
+1 Input:  [10, 5, 20, 8, 20] Output: 10
+2 Input:  [5, 5, 5] output null
+3 Input: [Int.MIN_VALUE,2] out put -2147483648
+fun secondLargestDistinct(inp:IntArray):Int?{
+var largest:Int?=null
+var secondLargest:Int?=null
+ for(i in inp){
+     if(largest == null || i>largest){
+		secondLargest=largest  
+        largest=i}
+     else if( i<largest && (secondLargest == null  || i>secondLargest )){
+        secondLargest=i   
+     }
+ }
+return secondLargest 
 }
