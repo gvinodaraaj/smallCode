@@ -101,3 +101,19 @@ fun productExceptSelf(inp:IntArray):IntArray{
 }
 Time: O(n) average
 Space: O(n)
+//maxConcuctiveSum
+val arr = intArrayOf(-2, 1, -3, 4, -1, 2, 1, -5, 4)
+fun maxConcuctiveSum(inp:IntArray):Int{
+ var maxSum=inp[0]
+ var curentSum=inp[0]
+ for(i in 1 until inp.size){
+     curentSum=maxOf(inp[i],curentSum+inp[i])
+      maxSum=maxOf(maxSum,curentSum) 
+   
+ }
+ return maxSum
+}
+Time	O(n)
+Space	O(1)
+Algorithm	Kadane's
+
