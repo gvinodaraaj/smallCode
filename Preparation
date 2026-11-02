@@ -85,5 +85,19 @@ fun longestConsecutive(inp:IntArray):Int{
     }
     return longest
 }
+//productExceptSelf
+fun productExceptSelf(inp:IntArray):IntArray{
+ val result=IntArray(inp.size)
+  result[0]=1
+ for(i in 1 until inp.size){
+  result[i]=result[i-1]*inp[i-1]
+ }
+ var right=1
+ for(i in inp.size-1 downTo 0){
+     result[i]*=right
+     right*=inp[i]   
+ }
+ return result
+}
 Time: O(n) average
 Space: O(n)
