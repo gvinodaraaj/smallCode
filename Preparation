@@ -141,3 +141,17 @@ fun moveZeroLeft(inp:IntArray){
 Time: O(n)
 Space: O(1)
 Technique: Two Pointers
+//BuySell
+    val arr = intArrayOf(7, 1, 5, 3, 6, 4)
+fun buySell(inp:IntArray):Int{
+    var minPrice=inp[0]
+    var maxProfit=0
+    for(i in  1 until inp.size){
+        val profit=inp[i]-minPrice
+        maxProfit=maxOf(maxProfit,profit)
+        minPrice=minOf(minPrice,inp[i])
+    }
+    return maxProfit
+}
+Time: O(n)
+Space: O(1)
