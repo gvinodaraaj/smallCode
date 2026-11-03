@@ -169,3 +169,5 @@ fun isValid(inp: String): Boolean {
      } 
     return stack.isEmpty()
 }
+Time: O(n)
+Space: O(1)
