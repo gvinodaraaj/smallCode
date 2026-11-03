@@ -116,4 +116,28 @@ fun maxConcuctiveSum(inp:IntArray):Int{
 Time	O(n)
 Space	O(1)
 Algorithm	Kadane's
-
+//movezero
+    val arr = intArrayOf(0, 1, 0, 3, 12)
+fun moveZero(inp:IntArray){
+    var index=0
+    for(i in inp){
+        if(i!=0){
+            inp[index]=i
+            index++
+        }
+    }
+    inp.fill(0,index,inp.size)
+}
+fun moveZeroLeft(inp:IntArray){
+    var index=inp.size-1
+    for(i in inp.size-1 downTo 0){
+        if(inp[i]!=0){
+            inp[index]=inp[i]
+            index--
+        }
+    }
+    inp.fill(0,0,index+1)
+}
+Time: O(n)
+Space: O(1)
+Technique: Two Pointers
