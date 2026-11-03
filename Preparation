@@ -155,3 +155,17 @@ fun buySell(inp:IntArray):Int{
 }
 Time: O(n)
 Space: O(1)
+// validate paranthesis
+    val str = "({[]})"
+fun isValid(inp: String): Boolean {
+    val stack=ArrayDeque<Char>()
+     for(i in inp){
+         when(i){
+             '(','[','{' -> stack.addLast(i)
+             '}'->{if( stack.isEmpty()||stack.removeLast()!=('{')) return false}
+			']'->{if( stack.isEmpty()||stack.removeLast()!=('[')) return false}
+			')'->{if( stack.isEmpty()||stack.removeLast()!=('(')) return false}
+         }
+     } 
+    return stack.isEmpty()
+}
