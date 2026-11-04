@@ -198,6 +198,8 @@ fun mergeSortedArrays(
     }
     return result
 }
+Time: O(n + m)
+Space: O(n + m)
 // rotation
 fun rotation(inp:IntArray,r:Int){
     val k=r%inp.size
@@ -207,5 +209,16 @@ fun rotation(inp:IntArray,r:Int){
 }
 Time: O(n)
 Space: O(1)
-Time: O(n + m)
-Space: O(n + m)
+// reverse word
+fun reversWord(inp:CharArray){
+    var start=0
+   revers(inp,0,inp.size-1)
+  for(i in 0 .. inp.size-1){
+      if(inp[i]==' '){
+         revers(inp,start,i-1) 
+         start=i+1
+      }
+  }
+   revers(inp,start,inp.size-1)
+}
+Complexity: O(n) time, O(1) extra space.
