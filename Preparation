@@ -171,3 +171,32 @@ fun isValid(inp: String): Boolean {
 }
 Time: O(n)
 Space: O(1)
+
+//merge arr
+fun mergeSortedArrays(
+    arr1: IntArray,
+    arr2: IntArray
+): IntArray {
+    val result = IntArray(arr1.size + arr2.size)
+    var i = 0
+    var j = 0
+    var k = 0
+    while (i < arr1.size && j < arr2.size) {
+        if (arr1[i] <= arr2[j]) {
+            result[k++] = arr1[i++]
+        } else {
+            result[k++] = arr2[j++]
+        }
+    }
+    // Copy remaining elements from arr1
+    while (i < arr1.size) {
+        result[k++] = arr1[i++]
+    }
+    // Copy remaining elements from arr2
+    while (j < arr2.size) {
+        result[k++] = arr2[j++]
+    }
+    return result
+}
+Time: O(n + m)
+Space: O(n + m)
