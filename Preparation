@@ -198,5 +198,14 @@ fun mergeSortedArrays(
     }
     return result
 }
+// rotation
+fun rotation(inp:IntArray,r:Int){
+    val k=r%inp.size
+    reversInt(inp,0,inp.size-1)
+     reversInt(inp,0,k-1)
+      reversInt(inp,k,inp.size-1)
+}
+Time: O(n)
+Space: O(1)
 Time: O(n + m)
 Space: O(n + m)
