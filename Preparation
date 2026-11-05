@@ -222,3 +222,24 @@ fun reversWord(inp:CharArray){
    revers(inp,start,inp.size-1)
 }
 Complexity: O(n) time, O(1) extra space.
+
+//countWord
+brut force
+fun main() {
+    val str = "newyorkcitynewyorkcitynewyorkcitycitynewyorkcitycitycitynewyorkcity"
+    val word = "newyork"
+    var count = 0
+    for (i in 0..str.length - word.length) {
+        var match = true
+        for (j in word.indices) {
+            if (str[i + j] != word[j]) {
+                match = false
+                break
+            }
+        }
+        if (match) {
+            count++
+        }
+    }
+    println("Count of newyork: $count")
+}
