@@ -241,5 +241,40 @@ fun main() {
             count++
         }
     }
+Time Complexity: O(n × m)
+Space Complexity: O(1) auxiliary space.
+//Substring
+fun main() {
+    val str = "newyorkcitynewyorkcitynewyorkcitycitynewyorkcitycitycitynewyorkcity"
+    val target = "newyork"
+    var count = 0
+    var i = 0
+    while (i <= str.length - target.length) {
+        if (str.substring(i, i + target.length) == target) {
+            count++
+            i += target.length
+        } else {
+            i++
+        }
+    }
+    println(count)
+}
+Time Complexity: O(n × m)
+Space Complexity: O(1) auxiliary space.
+// indexOf
+fun countWord(str:String,target:String):Int{
+    var count=0
+    var index=0
+    while(true){
+         val found = str.indexOf(target,index)
+         if(found==-1) break
+         count++
+         index=found+target.length
+    }
+    return count
+}
     println("Count of newyork: $count")
 }
+Interview answer:
+- Time: O(n × m) worst case
+- Space: O(1)
