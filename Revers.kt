@@ -48,3 +48,21 @@ fun evenNumbers(no: Int): Flow<Int> = flow {
         if(num %2==0) emit(num)
     }
 }
+fun main() {
+    runBlocking {
+        val flowInt = emitNumbers(10)
+            .filter { it % 2 == 0 }
+            .map { it * 10 }
+
+        flowInt.collect {
+            println(it)
+        }
+    }
+}
+
+fun emitNumbers(no: Int): Flow<Int> = flow {
+    repeat(no) {
+        delay(300)
+        emit(it + 1)
+    }
+}
