@@ -34,6 +34,9 @@ fun emitNumbers(no:Int):Flow<Int> =flow{
         emit(it+1)
     }
 }
+ flowInt.filter{it%2==0}.collect{
+       println(it)
+   }
 fun evenNumbers(no: Int): Flow<Int> = flow {
     repeat(no){index->
         val num=index+1
