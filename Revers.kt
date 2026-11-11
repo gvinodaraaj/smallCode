@@ -1,27 +1,30 @@
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.*
+import java.util.Date
+import java.util.Locale
+import java.util.TimeZone
+import java.text.SimpleDateFormat
 fun main() {
-    val kotlin = "myself is vinod hello"
-    val arrCh = kotlin.toCharArray()
-    var start=0
-    reversString(arrCh,start,arrCh.size-1) // Reverse each word in place
-    arrCh.forEachIndexed(){i,ch->
-        if(ch==' ')
-        {
-            reversString(arrCh,start,i-1)
-            start=i+1
-        }
+    runBlocking{
+    val time = TimeStampFlow()
+   val flowTime=time.getFlow(4)
+   flowTime.collect{
+        println(it)
+   }
     }
-    reversString(arrCh,start,arrCh.size-1)
-    println(arrCh.joinToString(""))
+
 }
-  
-fun reversString(arrCh:CharArray,start:Int,end:Int){
-    var left=start
-    var right=end
-    while(left<right){
-        val temp=arrCh[left]
-        arrCh[left]=arrCh[right]
-        arrCh[right]=temp
-        left++
-        right--
+
+class TimeStampFlow(){
+    val dformate="dd-MM-yyyy hh:mm:ss a"
+    val timeFormate=SimpleDateFormat(dformate,Locale.getDefault()).apply{
+    timeZone = TimeZone.getTimeZone("Asia/Kolkata")}
+    fun getFlow(times:Int):Flow<String> =flow{
+    repeat(times){index->
+        delay(1000)
+     val text=timeFormate.format(Date(System.currentTimeMillis()))
+      emit("acquired count $index and time $text")
+    }    
     }
 }
+
