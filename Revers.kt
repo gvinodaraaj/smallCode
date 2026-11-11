@@ -29,3 +29,14 @@ class TimeStampFlow(){
     }
 }
 
+fun emitNumbers(no:Int):Flow<Int> =flow{
+    repeat(no){it->
+        emit(it+1)
+    }
+}
+fun evenNumbers(no: Int): Flow<Int> = flow {
+    repeat(no){index->
+        val num=index+1
+        if(num %2==0) emit(num)
+    }
+}
