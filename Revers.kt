@@ -28,6 +28,34 @@ class TimeStampFlow(){
     }    
     }
 }
+import java.util.LinkedHashMap
+fun main() {
+val lruCache = LruCache<Int,String>(3)
+    lruCache.putc(1,"rudra")
+    lruCache.putc(2,"vinod")
+    lruCache.putc(3,"vanitha")
+    lruCache.getC(1)
+    lruCache.putc(4,"raj")
+println(lruCache.toString())
+}
+class LruCache<k,v>(private val capacity:Int){
+    private val  cache=object:LinkedHashMap<k,v>(capacity,0.75f,true){
+        override fun removeEldestEntry(eldest:MutableMap.MutableEntry<k,v>?):Boolean{
+            return size>capacity
+        }
+    }
+    fun getC(key:k):v?{
+        return cache[key]
+    }
+    fun putc(key:k,inp:v){
+        cache.put(key,inp)
+    }
+    fun removec(key:k){
+        cache.remove(key)
+    }
+    override fun toString():String{
+	return cache.toString()}
+}
 
 fun emitNumbers(no:Int):Flow<Int> =flow{
     repeat(no){it->
