@@ -56,6 +56,33 @@ class LruCache<k,v>(private val capacity:Int){
     override fun toString():String{
 	return cache.toString()}
 }
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.*
+import java.util.LinkedHashMap
+fun main() {
+    val rateLimiter =RateLimiter(2)
+    runBlocking{
+        launch{
+   repeat(5){index->
+       rateLimiter.acquire()
+    println("$index processed at ${System.currentTimeMillis()}")}}
+}
+}
+class RateLimiter(private val limit:Int){
+    private val channel=Channel<Unit>(limit)
+init{
+    GlobalScope.launch{
+    while(true){
+		repeat(limit){
+		channel.send(Unit)
+		}    
+        delay(1000)}
+   }
+}
+    suspend fun acquire(){
+        return channel.receive()
+    }
+}
 
 fun emitNumbers(no:Int):Flow<Int> =flow{
     repeat(no){it->
