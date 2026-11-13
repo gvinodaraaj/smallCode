@@ -85,6 +85,24 @@ fun longestConsecutive(inp:IntArray):Int{
     }
     return longest
 }
+fun longestSubstring(str:String):Int{
+    var longestStrLength=0
+    for(i in 0 .. str.length-1){
+      val setStr=HashSet<Char>()
+        var l=i
+        var cuttentLength=0
+        while(l<str.length){
+        if(setStr.add(str[l])){
+           cuttentLength++ 
+        }else{
+          break
+        }
+          longestStrLength=maxOf(longestStrLength,cuttentLength) 
+        l++
+        }
+    }
+    return longestStrLength
+}
 //productExceptSelf
 fun productExceptSelf(inp:IntArray):IntArray{
  val result=IntArray(inp.size)
